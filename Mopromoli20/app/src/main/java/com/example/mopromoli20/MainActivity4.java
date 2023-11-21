@@ -1,7 +1,7 @@
 package com.example.mopromoli20;
 
 import android.content.Intent;
-import android.graphics.Color;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,10 +25,8 @@ public class MainActivity4 extends AppCompatActivity {
 
                 // Set the OnClickListener outside of the loop
                 dice_button.setOnClickListener(v -> {
-                        // Inside the listener, perform the logic for each player
 
-                                // Perform your dice roll logic here
-                                marcTakenSpaces();
+                        markTakenSpaces();
                                 challenges.setText("Du bist auf Position " + Spieler.getAllPlayer().get(Spieler.whoseTurnIsIt()).getPosition() + " " + Spieler.getAllPlayer().get(Spieler.whoseTurnIsIt()).getName()+"!");
                                 shuffleArray(diceValues);
                                 simulateDiceRoll(diceValues, result -> {
@@ -39,10 +37,12 @@ public class MainActivity4 extends AppCompatActivity {
                                                 int Index = Spieler.whoseTurnIsIt();
                                                 if (gewuerfelt + Spieler.getAllPlayer().get(Index).getPosition() < 24) {
                                                         checkWhatToDo(gewuerfelt + Spieler.getAllPlayer().get(Index).getPosition(), challenges);
+                                                        UnMarkTakenSpaces();
                                                         Spieler.getAllPlayer().get(Index).setPosition(gewuerfelt+Spieler.getAllPlayer().get(Index).getPosition());
                                                         Spieler.addToWhoseTurn(); }
                                                 else {
                                                         checkWhatToDo(gewuerfelt + Spieler.getAllPlayer().get(Index).getPosition() - 24, challenges);
+                                                        UnMarkTakenSpaces();
                                                         Spieler.getAllPlayer().get(Index).setPosition(gewuerfelt+Spieler.getAllPlayer().get(Index).getPosition()-24);
                                                         Spieler.addToWhoseTurn();
                                                 }
@@ -87,7 +87,7 @@ public class MainActivity4 extends AppCompatActivity {
                 }, 50 * 100);
         }
 
-        public void marcTakenSpaces() {
+        public void markTakenSpaces() {
                 for (Spieler p: Spieler.getAllPlayer()) {
                         String name = null;
                         int resourceId = 0;
@@ -209,7 +209,128 @@ public class MainActivity4 extends AppCompatActivity {
                         }
                 }
         }
+        public void UnMarkTakenSpaces() {
+                for (Spieler p: Spieler.getAllPlayer()) {
+                        String name = null;
+                        int resourceId = 0;
+                        switch (p.getPosition()) {
+                                case 1: {
+                                        name = "pictureButton1";
+                                        break;
+                                }
+                                case 2: {
+                                        name = "wwerk_Button1";
+                                        break;
+                                }
+                                case 3: {
+                                        name = "knast_button";
+                                        break;
+                                }
+                                case 4: {
+                                        name = "picture_button2";
+                                        break;
+                                }
+                                case 5: {
+                                        name = "picture_button3";
+                                        break;
+                                }
+                                case 6: {
+                                        name = "kingscup_fill";
+                                        break;
+                                }
+                                case 7: {
+                                        name = "picture_button4";
+                                        break;
+                                }
+                                case 8: {
+                                        name = "picture_button5";
+                                        break;
+                                }
+                                case 9: {
+                                        name = "picture_button6";
+                                        break;
+                                }
+                                case 10: {
+                                        name = "extreme1";
+                                        break;
+                                }
+                                case 11: {
+                                        name = "pictureButton8";
+                                        break;
+                                }
+                                case 12: {
+                                        name = "kingscup_button";
+                                        break;
+                                }
+                                case 13: {
+                                        name = "picture_button9";
+                                        break;
+                                }
+                                case 14: {
+                                        name = "wwerk2";
+                                        break;
+                                }
+                                case 15: {
+                                        name = "dice_button";
+                                        break;
+                                }
+                                case 16: {
+                                        name = "pictureButton10";
+                                        break;
+                                }
+                                case 17: {
+                                        name = "picture_button11";
+                                        break;
+                                }
+                                case 18: {
+                                        name = "fillKingscup";
+                                        break;
+                                }
+                                case 19: {
+                                        name = "pictureButton12";
+                                        break;
+                                }
+                                case 20: {
+                                        name = "pictureButton13";
+                                        break;
+                                }
+                                case 21: {
+                                        name = "pictureButton14";
+                                        break;
+                                }
+                                case 22: {
+                                        name = "extreme2";
+                                        break;
+                                }
+                                case 23: {
+                                        name = "pictureButton16";
+                                        break;
+                                }
+                                case 24: {
+                                        name = "starting_button";
+                                        break;
+                                }
+                                default:
+                                        break;
 
+
+                        }
+                        if (name != null) {
+                                resourceId = getResources().getIdentifier(name, "id", getPackageName());
+                                int x = p.getPosition();
+                                if ( x ==3|| x==12 || x==15||x==24) {
+                                        Button button = findViewById(resourceId);
+                                        button.setBackgroundResource(androidx.leanback.R.color.lb_tv_white);
+                                }
+                                else {
+                                        ImageButton button = findViewById(resourceId);
+                                        button.setBackgroundResource(R.color.dark_grey);
+                                }
+
+
+                        }
+                }
+        }
 
 
         //Methode checked auf welchem Feld der Spieler ist und löst die entsprechende Aktion aus
