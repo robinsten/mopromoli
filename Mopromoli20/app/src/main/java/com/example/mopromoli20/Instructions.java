@@ -11,20 +11,20 @@ public class Instructions {
     public  String RandomPlayer (ArrayList < Spieler > myList) {
         Collections.shuffle(myList);
         Spieler p = myList.get(0);
-        Log.d("RandomPlayer", "Selected Player: " + p.getName());
         return p.getName();
 
     }
     //Möglichkeit, alle Instructions zu bekommen
     public ArrayList<String> getInstructions() {
-        ArrayList<String> Instructions = new ArrayList();
-        Instructions Neu = new Instructions();
-        Neu.addToInstructions(Instructions, Spieler.getAllPlayer(), Schwierigkeit.getSchwierigkeit());
-        return Instructions;
+
+
+        ArrayList<String> AllInstructions = addToInstructions( Spieler.getAllPlayer(), Schwierigkeit.getSchwierigkeit());
+        return AllInstructions;
     }
 
     //Liste wird erstellt
-    public  void addToInstructions(ArrayList Instructions, ArrayList myList, double difficulty) {
+    public  ArrayList<String> addToInstructions( ArrayList myList, double difficulty) {
+        ArrayList Instructions = new ArrayList<Instructions>();
         Collections.shuffle(myList);
         Instructions.add("Ein Pädophiler klopft beim Footballschauen an der Tür. Vor Lauter Beunruhigung musst du erstmal "+ AnzahlSippsNormal(difficulty) + " Schlücke trinken " + RandomPlayer(myList));
         Instructions.add("Die Iris haut deine PS4 weg. Trinke "+ AnzahlSippsNormal(difficulty) + " Schlücke Marco");
@@ -165,6 +165,8 @@ public class Instructions {
             Instructions.add("Ein Rentner fängt mit " + RandomPlayer(myList) + " im Zug fast eine Boxerei an. Glas auf Ex");
 
         }
+
+        return Instructions;
     }
 
     //Anhand der Schwierigkeit wird die Menge der Schlücke festgelegt

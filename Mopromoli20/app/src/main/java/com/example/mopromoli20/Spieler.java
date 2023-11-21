@@ -16,6 +16,10 @@ public class Spieler {
         this.position = position;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
     public String getName() {
         return name;
     }
