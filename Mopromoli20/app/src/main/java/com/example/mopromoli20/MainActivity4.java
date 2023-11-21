@@ -18,7 +18,7 @@ public class MainActivity4 extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main5);
 
-                final int[] diceValues = {15};
+                final int[] diceValues = {1,2,3,4,5,6};
                 TextView challenges = findViewById(R.id.output_challenges);
                 Button dice_button = findViewById(R.id.dice_button);
 
