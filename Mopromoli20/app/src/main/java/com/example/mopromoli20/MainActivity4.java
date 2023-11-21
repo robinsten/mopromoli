@@ -3,6 +3,7 @@ package com.example.mopromoli20;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -34,35 +35,21 @@ public class MainActivity4 extends AppCompatActivity {
                 dice_button.setOnClickListener(v -> {
                         // Inside the listener, perform the logic for each player
                         for (int k = 0; k < Spieler.getAnzahlSpieler(); k++) {
-                                String Name = AllPlayer.get(k).getName();
-                                challenges.setText("Du bist dran " + Name + "!");
-
                                 // Perform your dice roll logic here
                                 shuffleArray(diceValues);
-                                dice_button.setText(String.valueOf(diceValues[0]));
-                                String wurf = dice_button.getText().toString();
-                                int gewuerfelt = Integer.parseInt(wurf);
-                                checkWhatToDo(gewuerfelt, challenges);
+                                simulateDiceRoll(diceValues, result -> {
+                                                dice_button.setText(String.valueOf(diceValues[0]));
+                                                String wurf = dice_button.getText().toString();
+                                                int gewuerfelt = Integer.parseInt(wurf);
+                                                checkWhatToDo(gewuerfelt, challenges);
+                                        }
+                                        );
+
+
                                 //
                         }
                 });
         }
-
-
-        public void setAllButtonsFalse(ViewGroup layout) {
-                layout.post(() -> {
-                        for (int i = 0; i < layout.getChildCount(); i++) {
-                                View view = layout.getChildAt(i);
-                                if (view instanceof ImageButton) {
-                                        view.setEnabled(false);
-                                }
-                                if (view instanceof Button) {
-                                        view.setEnabled(false);
-                                }
-                        }
-                });
-        }
-
         //Methode shuffled den Array
         private static void shuffleArray(int[] array) {
 
@@ -75,6 +62,28 @@ public class MainActivity4 extends AppCompatActivity {
                         array[i] = temp;
                 }
         }
+        public void simulateDiceRoll(int[] diceValues, DiceCallback callback) {
+                Button dice_button = findViewById(R.id.dice_button);
+                final Handler handler = new Handler();
+
+                for (int i = 0; i < 50; i++) {
+                        handler.postDelayed(() -> {
+                                int number = new Random().nextInt(6) + 1;
+                                dice_button.setText(String.valueOf(number));
+                        }, i * 100);
+                }
+
+                handler.postDelayed(() -> {
+                        int lastNumber = diceValues[0];
+                        dice_button.setText(String.valueOf(lastNumber));
+                        // Call the callback with the final result
+                        if (callback != null) {
+                                callback.onDiceRollComplete(lastNumber);
+                        }
+                }, 50 * 100);
+        }
+
+
 
         //Methode checked auf welchem Feld der Spieler ist und löst die entsprechende Aktion aus
         public void checkWhatToDo(int Position, TextView Challenge_Anzeigen) {
@@ -361,30 +370,16 @@ public class MainActivity4 extends AppCompatActivity {
 
 
 }
-//  //Methode simuliert einen geworfenen Würfel mit den Zahlen 1 bis 6
-//        public void simulateDiceRoll() {
-//
-//                Button dice_button = findViewById(R.id.dice_button);
-//                dice_button.setEnabled(true);
-//
-//                dice_button.setOnClickListener(v -> {
-//
-//                        shuffleArray(diceValues);
-//                        final Handler handler = new Handler();
-//
-//                        for (int i = 0; i < numRolls; i++) {
-//                                handler.postDelayed(() -> {
-//                                        //6 weil die Zahlen von 1 bis 6 gewürfelt werden können
-//                                        int number = new Random().nextInt(6) + 1;
-//                                        dice_button.setText(String.valueOf(number));
-//                                }, i * delayMillis);
+// public void setAllButtonsFalse(ViewGroup layout) {
+//                layout.post(() -> {
+//                        for (int i = 0; i < layout.getChildCount(); i++) {
+//                                View view = layout.getChildAt(i);
+//                                if (view instanceof ImageButton) {
+//                                        view.setEnabled(false);
+//                                }
+//                                if (view instanceof Button) {
+//                                        view.setEnabled(false);
+//                                }
 //                        }
-//                        handler.postDelayed(() -> {
-//                                int lastNumber = diceValues[0];
-//                                dice_button.setText(String.valueOf(lastNumber));
-//                        }, numRolls * delayMillis);
-//
-//                        dice_button.setEnabled(false);
 //                });
-//
 //        }
