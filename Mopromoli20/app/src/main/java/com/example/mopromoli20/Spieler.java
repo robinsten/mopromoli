@@ -8,6 +8,7 @@ public class Spieler {
     private Integer position;
     private static Integer AnzahlSpieler;
     private final static ArrayList<Spieler> AllPlayer = new ArrayList<>();
+    private static int whoseTurn = 0;
 
 
 
@@ -38,4 +39,20 @@ public class Spieler {
 
     public Integer getPosition() {return position;}
     public void setPosition(int position) { this.position= position ;}
+    public static int whoseTurnIsIt() {
+
+        return whoseTurn;
+    }
+    public static void addToWhoseTurn(){
+        if (whoseTurn < getAnzahlSpieler()-1) {
+            whoseTurn++;
+        }
+        else {
+            whoseTurn = 0;
+        }
+    }
+
+
+
+
 }

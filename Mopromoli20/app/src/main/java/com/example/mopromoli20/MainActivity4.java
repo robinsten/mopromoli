@@ -25,8 +25,10 @@ public class MainActivity4 extends AppCompatActivity {
                 // Set the OnClickListener outside of the loop
                 dice_button.setOnClickListener(v -> {
                         // Inside the listener, perform the logic for each player
-                        for (int k = 0; k < Spieler.getAnzahlSpieler(); k++) {
+
                                 // Perform your dice roll logic here
+                                challenges.setText("Du bist auf Position " + Spieler.getAllPlayer().get(Spieler.whoseTurnIsIt()).getPosition() + " " + Spieler.getAllPlayer().get(Spieler.whoseTurnIsIt()).getName()+"!");
+                                Spieler.addToWhoseTurn();
                                 shuffleArray(diceValues);
                                 simulateDiceRoll(diceValues, result -> {
                                                 dice_button.setText(String.valueOf(diceValues[0]));
@@ -38,7 +40,7 @@ public class MainActivity4 extends AppCompatActivity {
 
 
                                 //
-                        }
+
                 });
         }
         //Methode shuffled den Array

@@ -23,8 +23,9 @@ public class Instructions {
     }
 
     //Liste wird erstellt
-    public  ArrayList<String> addToInstructions( ArrayList myList, double difficulty) {
+    public  ArrayList<String> addToInstructions( ArrayList startList, double difficulty) {
         ArrayList Instructions = new ArrayList<Instructions>();
+        ArrayList<Spieler> myList = new ArrayList<>(startList);
         Collections.shuffle(myList);
         Instructions.add("Ein Pädophiler klopft beim Footballschauen an der Tür. Vor Lauter Beunruhigung musst du erstmal "+ AnzahlSippsNormal(difficulty) + " Schlücke trinken " + RandomPlayer(myList));
         Instructions.add("Die Iris haut deine PS4 weg. Trinke "+ AnzahlSippsNormal(difficulty) + " Schlücke Marco");
