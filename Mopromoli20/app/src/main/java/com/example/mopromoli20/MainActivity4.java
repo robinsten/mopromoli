@@ -25,7 +25,7 @@ public class MainActivity4 extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main5);
 
-                final int[] diceValues = {1, 2, 3, 4, 5, 6};
+                final int[] diceValues = {1,2,3,4,5,6};
                 ViewGroup layout = findViewById(R.id.layout);
                 TextView challenges = findViewById(R.id.output_challenges);
                 Button dice_button = findViewById(R.id.dice_button);
@@ -284,18 +284,49 @@ public class MainActivity4 extends AppCompatActivity {
                         case 10:
                                 ImageButton Extreme1 = findViewById(R.id.extreme1);
                                 Extreme1.setEnabled(true);
-                                Extreme1.setOnClickListener(v -> {
-                                        Extreme1.setEnabled(false);
+                                Extreme1.setOnClickListener(v -> {System.out.println("Test2");
+
                                         VideoView videoView = findViewById(R.id.videoView3);
-                                       HardInstructions k  = h.addToHardInstructions(rating);
-                                       String video = k.getString1();
-                                       String beschreibung = k.getString2();
-                                        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + video));
-                                        videoView.setOnCompletionListener(mp -> Challenge_Anzeigen.setText(beschreibung));
+                                        videoView.setVisibility(View.VISIBLE);
+
+                                        HardInstructions k = h.addToHardInstructions(rating);
+                                        String video = k.getString1();
+                                        String beschreibung = k.getString2();
+
+
+                                        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/raw/" + video));
                                         videoView.start();
 
+                                        videoView.setOnCompletionListener(mp -> {
+                                                Challenge_Anzeigen.setText(beschreibung);
+                                                videoView.setVisibility(View.INVISIBLE);
+                                                Extreme1.setEnabled(false);
+                                        });
                                 });
                                 break;
+                        case 22:
+                                ImageButton Extreme2 = findViewById(R.id.extreme2);
+                                Extreme2.setEnabled(true);
+                                Extreme2.setOnClickListener(v -> {
+
+                                        VideoView videoView = findViewById(R.id.videoView3);
+                                        videoView.setVisibility(View.VISIBLE);
+
+                                        HardInstructions k = h.addToHardInstructions(rating);
+                                        String video = k.getString1();
+                                        String beschreibung = k.getString2();
+
+                                        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/raw/" + video));
+                                        videoView.start();
+
+                                        videoView.setOnCompletionListener(mp -> {
+                                                Challenge_Anzeigen.setText(beschreibung);
+                                                videoView.setVisibility(View.INVISIBLE);
+                                                Extreme2.setEnabled(false);
+                                        });
+                                });
+                                break;
+
                         case 12:
                                 Button DrinkKingsCup = findViewById(R.id.kingscup_button);
                                 DrinkKingsCup.setEnabled(true);
@@ -313,21 +344,7 @@ public class MainActivity4 extends AppCompatActivity {
                                 });
                                 break;
 
-                        case 22:
-                                ImageButton Extreme2 = findViewById(R.id.extreme2);
-                                Extreme2.setEnabled(true);
-                                Extreme2.setOnClickListener(v -> {
-                                        Extreme2.setEnabled(false);
-                                        VideoView videoView = findViewById(R.id.videoView3);
-                                        h.addToHardInstructions(rating);
-                                        String video = h.getString1();
-                                        String beschreibung = h.getString2();
-                                        videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + video));
-                                        videoView.setOnCompletionListener(mp -> Challenge_Anzeigen.setText(beschreibung));
-                                        videoView.start();
 
-                                });
-                                break;
                         case 24:
                                 Button StartFeld = findViewById(R.id.starting_button);
                                 StartFeld.setEnabled(true);
