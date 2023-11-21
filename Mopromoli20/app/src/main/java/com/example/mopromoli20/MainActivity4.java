@@ -5,29 +5,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
 import java.util.Random;
 
 
 public class MainActivity4 extends AppCompatActivity {
-
-
-        private final ArrayList<Spieler> AllPlayer = Spieler.getAllPlayer();
-
-
-
         protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main5);
 
                 final int[] diceValues = {1,2,3,4,5,6};
-                ViewGroup layout = findViewById(R.id.layout);
                 TextView challenges = findViewById(R.id.output_challenges);
                 Button dice_button = findViewById(R.id.dice_button);
 
@@ -370,16 +361,3 @@ public class MainActivity4 extends AppCompatActivity {
 
 
 }
-// public void setAllButtonsFalse(ViewGroup layout) {
-//                layout.post(() -> {
-//                        for (int i = 0; i < layout.getChildCount(); i++) {
-//                                View view = layout.getChildAt(i);
-//                                if (view instanceof ImageButton) {
-//                                        view.setEnabled(false);
-//                                }
-//                                if (view instanceof Button) {
-//                                        view.setEnabled(false);
-//                                }
-//                        }
-//                });
-//        }
