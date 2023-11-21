@@ -151,7 +151,7 @@ public class MainActivity4 extends AppCompatActivity {
                                 break;
                         }
 
-                        case 12:
+                        case 11:
                         {
                                 ImageButton AchtesFeld = findViewById(R.id.pictureButton8);
                                 AchtesFeld.setEnabled(true);
@@ -162,7 +162,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 break;
                         }
-                        case 14:
+                        case 13:
                         {
                                 ImageButton NeuntesFeld = findViewById(R.id.picture_button9);
                                 NeuntesFeld.setEnabled(true);
@@ -173,7 +173,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 break;
                         }
-                        case 17:
+                        case 16:
                         {
                                 ImageButton ZehntesFeld = findViewById(R.id.pictureButton10);
                                 ZehntesFeld.setEnabled(true);
@@ -184,7 +184,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 break;
                         }
-                        case 18:
+                        case 17:
                         {
                                 ImageButton ElftesFeld = findViewById(R.id.picture_button11);
                                 ElftesFeld.setEnabled(true);
@@ -195,7 +195,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 break;
                         }
-                        case 20:
+                        case 19:
                         {
                                 ImageButton ZwoelftesFeld = findViewById(R.id.pictureButton12);
                                 ZwoelftesFeld.setEnabled(true);
@@ -206,7 +206,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 break;
                         }
-                        case 21:
+                        case 20:
                         {
                                 ImageButton DreizehntesFeld = findViewById(R.id.pictureButton13);
                                 DreizehntesFeld.setEnabled(true);
@@ -217,7 +217,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 break;
                         }
-                        case 22:
+                        case 21:
                         {
                                 ImageButton VierzehntesFeld = findViewById(R.id.pictureButton14);
                                 VierzehntesFeld.setEnabled(true);
@@ -229,7 +229,7 @@ public class MainActivity4 extends AppCompatActivity {
                                 break;
                         }
 
-                        case 25:
+                        case 23:
                         {
                                 ImageButton SechzehntesFeld = findViewById(R.id.pictureButton16);
                                 SechzehntesFeld.setEnabled(true);
@@ -251,7 +251,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 break;
                         }
-                        case 15: {
+                        case 14: {
                                 ImageButton Stadtwerke2 = findViewById(R.id.wwerk2);
                                 Stadtwerke2.setEnabled(true);
                                 Stadtwerke2.setOnClickListener(v -> {
@@ -296,7 +296,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 });
                                 break;
-                        case 13:
+                        case 12:
                                 Button DrinkKingsCup = findViewById(R.id.kingscup_button);
                                 DrinkKingsCup.setEnabled(true);
                                 DrinkKingsCup.setOnClickListener(v -> {Challenge_Anzeigen.setText("Du musst den Kingscup trinken!");
@@ -305,7 +305,7 @@ public class MainActivity4 extends AppCompatActivity {
                                 break;
 
 
-                        case 19:
+                        case 18:
                                 ImageButton FillKingsCup2 = findViewById(R.id.fillKingscup);
                                 FillKingsCup2.setEnabled(true);
                                 FillKingsCup2.setOnClickListener(v -> {Challenge_Anzeigen.setText("Du darfst den Kingscup füllen!");
@@ -313,7 +313,7 @@ public class MainActivity4 extends AppCompatActivity {
                                 });
                                 break;
 
-                        case 23:
+                        case 22:
                                 ImageButton Extreme2 = findViewById(R.id.extreme2);
                                 Extreme2.setEnabled(true);
                                 Extreme2.setOnClickListener(v -> {
@@ -328,7 +328,7 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 });
                                 break;
-                        case 26:
+                        case 24:
                                 Button StartFeld = findViewById(R.id.starting_button);
                                 StartFeld.setEnabled(true);
                                 StartFeld.setOnClickListener(v -> {
