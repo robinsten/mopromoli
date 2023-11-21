@@ -18,7 +18,7 @@ public class MainActivity4 extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_main5);
 
-                final int[] diceValues = {1,2,3,4,5,6};
+                final int[] diceValues = {15};
                 TextView challenges = findViewById(R.id.output_challenges);
                 Button dice_button = findViewById(R.id.dice_button);
 
@@ -28,13 +28,22 @@ public class MainActivity4 extends AppCompatActivity {
 
                                 // Perform your dice roll logic here
                                 challenges.setText("Du bist auf Position " + Spieler.getAllPlayer().get(Spieler.whoseTurnIsIt()).getPosition() + " " + Spieler.getAllPlayer().get(Spieler.whoseTurnIsIt()).getName()+"!");
-                                Spieler.addToWhoseTurn();
                                 shuffleArray(diceValues);
                                 simulateDiceRoll(diceValues, result -> {
+
                                                 dice_button.setText(String.valueOf(diceValues[0]));
                                                 String wurf = dice_button.getText().toString();
                                                 int gewuerfelt = Integer.parseInt(wurf);
-                                                checkWhatToDo(gewuerfelt, challenges);
+                                                int Index = Spieler.whoseTurnIsIt();
+                                                if (gewuerfelt + Spieler.getAllPlayer().get(Index).getPosition() < 24) {
+                                                        checkWhatToDo(gewuerfelt + Spieler.getAllPlayer().get(Index).getPosition(), challenges);
+                                                        Spieler.getAllPlayer().get(Index).setPosition(gewuerfelt+Spieler.getAllPlayer().get(Index).getPosition());
+                                                        Spieler.addToWhoseTurn(); }
+                                                else {
+                                                        checkWhatToDo(gewuerfelt + Spieler.getAllPlayer().get(Index).getPosition() - 24, challenges);
+                                                        Spieler.getAllPlayer().get(Index).setPosition(gewuerfelt+Spieler.getAllPlayer().get(Index).getPosition()-24);
+                                                        Spieler.addToWhoseTurn();
+                                                }
                                         }
                                         );
 
@@ -174,6 +183,10 @@ public class MainActivity4 extends AppCompatActivity {
                                 });
 
                                 break;
+                        }
+                        case 15:
+                        {
+                                Challenge_Anzeigen.setText("Das ist der Würfel, hier passiert nichts!");
                         }
                         case 16:
                         {
