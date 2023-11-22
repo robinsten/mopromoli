@@ -4,6 +4,7 @@ public class Schwierigkeit {
 
     private static float Schwierigkeit ;
 
+
     public static float getSchwierigkeit() {
         return Schwierigkeit;
     }
@@ -11,4 +12,6 @@ public class Schwierigkeit {
     public static void setSchwierigkeit(float schwierigkeit) {
         Schwierigkeit = schwierigkeit;
     }
+
+
 }

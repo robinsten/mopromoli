@@ -87,6 +87,7 @@ public class MainActivity4 extends AppCompatActivity {
                 }, 50 * 100);
         }
 
+
         public void markTakenSpaces() {
                 for (Spieler p: Spieler.getAllPlayer()) {
                         String name = null;
@@ -202,7 +203,7 @@ public class MainActivity4 extends AppCompatActivity {
                                 }
                                 else {
                                         ImageButton button = findViewById(resourceId);
-                                        button.setBackgroundResource(R.color.white);
+                                        button.setBackgroundResource(androidx.leanback.R.color.lb_grey);
                                 }
 
 
@@ -320,11 +321,18 @@ public class MainActivity4 extends AppCompatActivity {
                                 int x = p.getPosition();
                                 if ( x ==3|| x==12 || x==15||x==24) {
                                         Button button = findViewById(resourceId);
-                                        button.setBackgroundResource(androidx.leanback.R.color.lb_tv_white);
-                                }
-                                else {
+                                        button.setBackgroundResource(R.color.white);
+                                } else if (x ==2|| x== 14) {
                                         ImageButton button = findViewById(resourceId);
-                                        button.setBackgroundResource(R.color.dark_grey);
+                                        button.setBackgroundResource(R.color.white);
+
+                                } else if (x==6 || x ==10 || x ==18 || x ==22) {
+                                        ImageButton button = findViewById(resourceId);
+                                        button.setBackgroundResource(R.color.black);
+
+                                } else {
+                                        ImageButton button = findViewById(resourceId);
+                                        button.setBackgroundResource(R.color.default_background);
                                 }
 
 
